@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 18:41:56 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/17 20:09:19 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/18 03:09:34 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,12 @@ int	ft_isspace(char c)
 	return (c == 32 || (9 <= c && c <= 13));
 }
 
+int ft_strlen(char *str)
+{
+	int	cnt;
+
+	cnt = 0;
+	while (str[cnt])
+		cnt++;
+	return (cnt);
+}

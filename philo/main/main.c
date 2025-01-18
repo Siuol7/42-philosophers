@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilities.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 15:56:51 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/17 19:49:24 by caonguye         ###   ########.fr       */
+/*   Created: 2025/01/17 15:50:15 by caonguye          #+#    #+#             */
+/*   Updated: 2025/01/18 03:10:18 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	utilities(int ac, char **av)
+int	main(int ac, char **av)
 {
-	if ((ac != 5 && ac != 6) || !av_validation(av))
-		return (0);
+	if(!utilities(ac, av))
+		printf("Invalid Arguments\n");
 }

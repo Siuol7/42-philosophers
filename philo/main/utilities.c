@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 15:50:15 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/17 15:56:43 by caonguye         ###   ########.fr       */
+/*   Created: 2025/01/17 15:56:51 by caonguye          #+#    #+#             */
+/*   Updated: 2025/01/18 04:05:30 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	main(int ac, char **av)
+int	utilities(int ac, char **av)
 {
-	if(!utilities)
+	if ((ac != 5 && ac != 6) || !av_parsing(av))
+		return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/18 04:10:14 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/21 00:34:56 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ typedef struct s_dinner
 {
 	pthread_t		philo_cnt;
 	pthread_mutex_t	*forks;
-
-
+	pthread_mutex_t	status;
 }	t_dinner;
 
 typedef struct s_philo

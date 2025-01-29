@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/23 03:18:15 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/30 01:22:58 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,8 @@ int	set_up(t_dinner *table, char **av)
 	table->time_to_die = av[2];
 	table->time_to_eat = av[3];
 	table->time_to_sleep = av[4];
-	table->meals_cnt
+	table->meals_cnt = -1;
+	if (av[5])
+		table->meals_cnt = av[5];
+	
 }

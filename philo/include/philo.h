@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/23 03:21:59 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/23 18:28:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_dinner
 	unsigned int	time_to_die;
 	unsigned int	time_to_sleep;
 	unsigned int	meals_cnt;
-	pthread_t		philo_cnt;
-	pthread_t		fork_cnt;
+	unsigned int	philo_cnt;
+	unsigned int	fork_cnt;
 	struct s_philo	*philo;
 	pthread_mutex_t	*thread;
 	pthread_mutex_t	*status;

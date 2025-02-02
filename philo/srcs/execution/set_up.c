@@ -6,11 +6,34 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/03 00:40:47 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/03 02:05:12 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
+
+static t_status	set_up_mutex(t_dinner *table)
+{
+	int	i;
+
+	i = 0;
+	while (i < table->fork_cnt)
+	{
+		if (pthread_mutex_init(table->forks_lst[i], NULL))
+		{
+			while (i--)
+			{
+				pthread_mutex_destroy(table->forks_lst[i]);
+				table->forks_lst[i] = NULL;
+			}
+			free(table->forks_lst);
+			table->forks_lst = 	NULL;
+			return (ERROR);
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
 
 int	set_up(t_dinner *table, char **av)
 {
@@ -25,5 +48,7 @@ int	set_up(t_dinner *table, char **av)
 	table->philo = malloc(table->philo_cnt*sizeof(t_philo));
 	table->forks_lst = malloc(table->fork_cnt*(sizeof(pthread_mutex_t)));
 	if (!table->philo || !table->forks_lst)
+		return(setup_error(table));
+	if (set_up_mutex(table))
 		return(setup_error(table));
 }

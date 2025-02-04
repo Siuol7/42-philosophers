@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/03 02:05:12 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/04 18:56:47 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static t_status	set_up_mutex(t_dinner *table)
+static int	set_up_mutex(t_dinner *table)
 {
 	int	i;
 
@@ -28,11 +28,18 @@ static t_status	set_up_mutex(t_dinner *table)
 			}
 			free(table->forks_lst);
 			table->forks_lst = 	NULL;
-			return (ERROR);
+			return (0);
 		}
 		i++;
 	}
-	return (SUCCESS);
+	if (pthread_mutex_init(table->status, NULL))
+		return (0);
+	return (1);
+}
+
+static int	set_up_thread(t_dinner *table)
+{
+
 }
 
 int	set_up(t_dinner *table, char **av)

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/04 19:06:16 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/07 11:29:55 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
+	struct s_dinner	*all;
 }	t_philo;
 
 typedef enum e_status

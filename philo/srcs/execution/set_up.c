@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/05 06:22:52 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:54:34 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ static int	set_up_mutex(t_dinner *table)
 	return (1);
 }
 
-static int	set_up_thread(t_dinner *table)
+static int	set_up_thread(t_dinner *table, int i)
 {
 
+	pthread_create(&table->philo[i].thread, NULL, &routine, &table->philo[i])
 }
 
 static int	set_up_philo(t_dinner *table)
@@ -56,6 +57,8 @@ static int	set_up_philo(t_dinner *table)
 		table->philo[i].eaten = 0;
 		table->philo[i].left_fork = table->forks_lst[i];
 		table->philo[i].right_fork = table->forks_lst[right];
+		table->philo[i].all = table;
+		set_up_thread(table);
 	}
 }
 

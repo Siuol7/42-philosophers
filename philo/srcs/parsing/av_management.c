@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 03:10:32 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/03 00:57:06 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:45:11 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	av_validation(int ac, char **av)
 	return (1);
 }
 
-int	av_parsing(int ac, char **av, t_philo *philo, t_dinner *table)
+int	av_parsing(int ac, char **av)
 {
 	if (!av_validation(ac, av))
 		return (0);

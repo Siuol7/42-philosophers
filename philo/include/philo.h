@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/07 11:29:55 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:04:28 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,15 @@ typedef enum e_status
 	SUCCESS,
 	RUNNING,
 	FINNISH
-}	t_status
+}	t_status;
+
+int		utilities(int ac, char **av);
+int		av_parsing(int ac, char **av);
+
+
+//____________________________________Minilibft______________________//
+int		ft_atoui(char *str);
+int		ft_isspace(char c);
+int 	ft_strlen(char *str);
 
 #endif

@@ -4,42 +4,37 @@ RM				:= rm -rf
 CFLAGS			:= -Wall -Wextra -Werror
 
 #INCLUDE
-INCLUDE				:=  -I ./includes
-MAIN				:= ./main
-MANDATORY			:= ./srcs/mandatory
-BONUS				:= ./srcs/bonus
+INCLUDE			:=  -I ./include
+MAIN			:= ./main
+SRCS			:= ./srcs
 
 
-PARSING				:= parsing
-#EXECUTION			:= execution
-ERROR				:= error
+PARSING			:= parsing
+#EXECUTION		:= execution
+MINILIB			:=  minilibrary
+ERROR			:= error
 
-MAIN_C				:=	main.c				\
+MAIN_C			:=	main.c				\
 						utilities.c
 
-PARSING_C			:=	av_management.c		\
+PARSING_C		:=	av_management.c		\
 
-EXECUTION_C			:=	game_operation.c	\
-						graphic.c			\
-						display_image.c		\
-						game_control.c		\
-						game_end.c
+EXECUTION_C		:=
 
-ERROR_C				:= error_handling.c
+ERROR_C			:=
 
-SRCS				:= 	$(addprefix $(MAIN)/,					$(MAIN_C))			\
-						$(addprefix	$(MANDATORY)/$(PARSING)/,	$(PARSING_C))		\
-						#$(addprefix $(MANDATORY)/$(EXECUTION)/,	$(EXECUTION_C))		\
-						#$(addprefix $(MANDATORY)/$(ERROR)/,		$(ERROR_C))
+MINILIB_C		:=	minilibft.c
 
-#BONUS				:=
+SRCS			:= 	$(addprefix $(MAIN)/,				$(MAIN_C))		\
+						$(addprefix	$(SRCS)/$(PARSING)/,	$(PARSING_C))	\
+						$(addprefix $(SRCS)/$(MINILIB)/,	$(MINILIB_C))	\
+						#$(addprefix $(SRCS)/$(EXECUTION)/,	$(EXECUTION_C))		\
+						#$(addprefix $(SRCS)/$(ERROR)/,		$(ERROR_C))
 
-OBJS				:= $(SRCS:.c=.o)
-
-#OBJS_BN			:= $(BONUS:.c=.o)
+OBJS			:= $(SRCS:.c=.o)
 
 #Default Target
-all:	mandatory
+all:	philo
 
 #Compiling Rule
 %.o:	%.c
@@ -47,25 +42,19 @@ all:	mandatory
 	@$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE)
 
 #Create source library
-mandatory : .mandatory
-.mandatory: $(OBJS)
+philo : .philo
+.philo: $(OBJS)
 		@cc $(OBJS) -o $(NAME)
-		@touch .mandatory
-
-# Create bonus lib
-bonus : .bonus
-.bonus : $(OBJS_BN)
-		@cc $(OBJS_BN) -o $(NAME)
-		@touch .bonus
+		@touch .philo
 
 # Clean target
 clean:
-	@$(RM) $(OBJS) $(OBJS_BN) .mandatory .bonus
+	@$(RM) $(OBJS) $(OBJS_BN) .philo
 
 # Fclean target
 fclean:
 		@echo "----------------------------Cleaning----------------------------"
-		@$(RM) $(OBJS) $(OBJS_BN) .bonus .mandatory $(NAME)
+		@$(RM) $(OBJS) $(OBJS_BN) .philo $(NAME)
 		@echo "----------------------------Finished----------------------------"
 
 # Rebuild target

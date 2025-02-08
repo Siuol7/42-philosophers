@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/07 12:54:34 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/07 13:43:53 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ static int	set_up_mutex(t_dinner *table)
 static int	set_up_thread(t_dinner *table, int i)
 {
 
-	pthread_create(&table->philo[i].thread, NULL, &routine, &table->philo[i])
+	if (pthread_create(&table->philo[i].thread, NULL, &routine, &table->philo[i])
+
+	while
+
 }
 
 static int	set_up_philo(t_dinner *table)

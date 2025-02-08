@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 18:41:56 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/18 03:09:34 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/08 22:38:13 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	ft_atoui(char *str)
 	i = 0;
 	while (ft_isspace(str[i]))
 		i++;
-	if (str[i] == 1)
+	if (str[i] == '+')
 		i++;
-	if (!str[i] || '0' > str[i] || str[i] > 9)
+	if (!str[i] || '0' > str[i] || str[i] > '9')
 		return (-1);
 	while ('0' <= str[i] && str[i] <= '9')
 	{

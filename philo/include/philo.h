@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/09 10:27:20 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/09 12:16:13 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 
 typedef struct s_dinner
 {
-	unsigned int	time_to_eat;
-	unsigned int	time_to_die;
-	unsigned int	time_to_sleep;
-	unsigned int	meals_cnt;
-	unsigned int	philo_cnt;
-	unsigned int	fork_cnt;
-	unsigned int	philos_done;
-	unsigned int	philo_death;
+	size_t	time_to_eat;
+	size_t	time_to_die;
+	size_t	time_to_sleep;
+	size_t	meals_cnt;
+	size_t	philo_cnt;
+	size_t	fork_cnt;
+	size_t	philos_done;
+	size_t	philo_death;
 	struct s_philo	*philo;
 	pthread_mutex_t	*death;
 	pthread_mutex_t	**forks_lst;
@@ -37,9 +37,9 @@ typedef struct s_dinner
 
 typedef struct s_philo
 {
-	long			next_meal;
-	long			last_meal;
-	unsigned int	eaten;
+	size_t			next_meal;
+	size_t			last_meal;
+	size_t	eaten;
 	struct s_dinner	*all;
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
@@ -68,5 +68,6 @@ int 	ft_strlen(char *str);
 int		ft_mutex_clear(t_dinner *table, int i);
 void	philo_memset(t_philo *philo);
 void	dinner_memset(t_dinner *table);
+size_t	current(void);
 
 #endif

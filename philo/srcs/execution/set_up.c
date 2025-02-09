@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/07 13:43:53 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/09 08:03:33 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,7 @@ static int	set_up_mutex(t_dinner *table)
 	while (i < table->fork_cnt)
 	{
 		if (pthread_mutex_init(table->forks_lst[i], NULL))
-		{
-			while (i--)
-			{
-				pthread_mutex_destroy(table->forks_lst[i]);
-				table->forks_lst[i] = NULL;
-			}
-			free(table->forks_lst);
-			table->forks_lst = 	NULL;
-			return (0);
-		}
+			return (ft_mutex_clear(table, i));
 		i++;
 	}
 	if (pthread_mutex_init(table->status, NULL))
@@ -40,10 +31,10 @@ static int	set_up_mutex(t_dinner *table)
 static int	set_up_thread(t_dinner *table, int i)
 {
 
-	if (pthread_create(&table->philo[i].thread, NULL, &routine, &table->philo[i])
-
-	while
-
+	if (pthread_create(&table->philo[i].thread, NULL, &routine, &table->philo[i]))
+		return (0);
+	pthread_join(&table->philo[i].thread, NULL);
+	return (1);
 }
 
 static int	set_up_philo(t_dinner *table)
@@ -61,11 +52,13 @@ static int	set_up_philo(t_dinner *table)
 		table->philo[i].left_fork = table->forks_lst[i];
 		table->philo[i].right_fork = table->forks_lst[right];
 		table->philo[i].all = table;
-		set_up_thread(table);
+		if (!set_up_thread(table, i))
+			return (0);
 	}
+	return (1);
 }
 
-int	set_up(t_dinner *table, char **av)
+int	set_up(t_dinner *table, t_philo *philo, char **av)
 {
 	table->philo_cnt = ft_atoui(av[1]);
 	table->fork_cnt = ft_atoui(av[1]);
@@ -79,6 +72,8 @@ int	set_up(t_dinner *table, char **av)
 	table->forks_lst = malloc(table->fork_cnt*(sizeof(pthread_mutex_t)));
 	if (!table->philo || !table->forks_lst)
 		return (setup_error(table));
+	dinner_memset(table);
+	philo_memset(philo);
 	if (set_up_mutex(table))
 		return (setup_error(table));
 	if (set_up_philo(table))

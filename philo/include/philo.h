@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/08 22:49:32 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/09 08:37:23 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_dinner
 	unsigned int	meals_cnt;
 	unsigned int	philo_cnt;
 	unsigned int	fork_cnt;
+	unsigned int	philos_done;
 	struct s_philo	*philo;
 	pthread_mutex_t	*status;
 	pthread_mutex_t	**forks_lst;
@@ -38,10 +39,10 @@ typedef struct s_philo
 	long			next_meal;
 	long			last_meal;
 	unsigned int	eaten;
+	struct s_dinner	*all;
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	struct s_dinner	*all;
 }	t_philo;
 
 typedef enum e_status
@@ -60,5 +61,8 @@ int		av_parsing(int ac, char **av);
 int		ft_atoui(char *str);
 int		ft_isspace(char c);
 int 	ft_strlen(char *str);
+int		ft_mutex_clear(t_dinner *table, int i);
+void	philo_memset(t_philo *philo);
+void	dinner_memset(t_dinner *table);
 
 #endif

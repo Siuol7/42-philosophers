@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   av_management.c                                    :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/18 03:10:32 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/09 03:21:07 by caonguye         ###   ########.fr       */
+/*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
+/*   Updated: 2025/02/09 09:08:21 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	av_validation(int ac, char **av)
+void	routine(table, philo)
 {
-	int	i;
-
-	i = 1;
-	while (i < ac)
-	{
-		if (ft_atoui(av[i]) < 1)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	av_parsing(int ac, char **av)
-{
-	if (!av_validation(ac, av))
-		return (0);
-	return (1);
+	think(table, philo);
+	eat();
+	sleep();
 }

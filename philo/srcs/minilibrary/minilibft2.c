@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   av_management.c                                    :+:      :+:    :+:   */
+/*   minilibft2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/18 03:10:32 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/09 03:21:07 by caonguye         ###   ########.fr       */
+/*   Created: 2025/02/09 06:52:16 by caonguye          #+#    #+#             */
+/*   Updated: 2025/02/09 07:25:05 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	av_validation(int ac, char **av)
+int	ft_mutex_clear(t_dinner *table, int i)
 {
-	int	i;
-
-	i = 1;
-	while (i < ac)
+	while (i--)
 	{
-		if (ft_atoui(av[i]) < 1)
-			return (0);
-		i++;
+		pthread_mutex_destroy(table->forks_lst[i]);
+		table->forks_lst[i] = NULL;
 	}
-	return (1);
+	free(table->forks_lst);
+	table->forks_lst = 	NULL;
+	return (0);
 }
 
-int	av_parsing(int ac, char **av)
+void	philo_memset(t_philo *philo)
 {
-	if (!av_validation(ac, av))
-		return (0);
-	return (1);
+	memset(philo, 0, (char*)&philo->all - (char*)philo);
+}
+
+void	dinner_memset(t_dinner *table)
+{
+	memset(table, 0, (char*)&table->philo - (char*)&table);
 }

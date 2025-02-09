@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/09 08:03:33 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/09 09:43:46 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,7 @@ static int	set_up_mutex(t_dinner *table)
 	return (1);
 }
 
-static int	set_up_thread(t_dinner *table, int i)
-{
-
-	if (pthread_create(&table->philo[i].thread, NULL, &routine, &table->philo[i]))
-		return (0);
-	pthread_join(&table->philo[i].thread, NULL);
-	return (1);
-}
-
-static int	set_up_philo(t_dinner *table)
+static void	set_up_philo(t_dinner *table)
 {
 	int	i;
 	int	right;
@@ -52,10 +43,8 @@ static int	set_up_philo(t_dinner *table)
 		table->philo[i].left_fork = table->forks_lst[i];
 		table->philo[i].right_fork = table->forks_lst[right];
 		table->philo[i].all = table;
-		if (!set_up_thread(table, i))
-			return (0);
+		i++;
 	}
-	return (1);
 }
 
 int	set_up(t_dinner *table, t_philo *philo, char **av)
@@ -76,6 +65,5 @@ int	set_up(t_dinner *table, t_philo *philo, char **av)
 	philo_memset(philo);
 	if (set_up_mutex(table))
 		return (setup_error(table));
-	if (set_up_philo(table))
-		return (setup_error(table));
+	set_up_philo(table);
 }

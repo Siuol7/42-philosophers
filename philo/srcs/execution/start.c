@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minilibft2.c                                       :+:      :+:    :+:   */
+/*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 06:52:16 by caonguye          #+#    #+#             */
+/*   Created: 2025/02/09 09:32:27 by caonguye          #+#    #+#             */
 /*   Updated: 2025/02/09 09:43:46 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	ft_mutex_clear(t_dinner *table, int i)
+static int	gen_thread(t_dinner *table, int i)
 {
-	while (i--)
-	{
-		pthread_mutex_destroy(table->forks_lst[i]);
-		table->forks_lst[i] = NULL;
-	}
-	free(table->forks_lst);
-	table->forks_lst = 	NULL;
-	return (0);
+
+	if (pthread_create(&table->philo[i].thread, NULL, &routine, &table->philo[i]))
+		return (0);
+	pthread_join(&table->philo[i].thread, NULL);
+	return (1);
 }
 
-void	philo_memset(t_philo *philo)
+int	dinner_starts(t_dinner *table, t_philo *philo)
 {
-	memset(philo, 0, (char*)&philo->all - (char*)philo);
-}
 
-void	dinner_memset(t_dinner *table)
-{
-	memset(table, 0, (char*)&table->philo - (char*)&table);
 }

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/09 08:37:23 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/09 10:27:20 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ typedef struct s_dinner
 	unsigned int	philo_cnt;
 	unsigned int	fork_cnt;
 	unsigned int	philos_done;
+	unsigned int	philo_death;
 	struct s_philo	*philo;
-	pthread_mutex_t	*status;
+	pthread_mutex_t	*death;
 	pthread_mutex_t	**forks_lst;
 }	t_dinner;
 
@@ -56,6 +57,9 @@ typedef enum e_status
 int		utilities(int ac, char **av);
 int		av_parsing(int ac, char **av);
 
+
+//_________________________Routine________________________//
+void	routine(table, philo);
 
 //_________________________Minilibft______________________//
 int		ft_atoui(char *str);

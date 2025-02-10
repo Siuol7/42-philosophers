@@ -53,7 +53,6 @@ clean:
 
 # Fclean target
 fclean:
-		@echo "____________________________Cleaning____________________________"
 		@$(RM) $(OBJS) $(OBJS_BN) .philo $(NAME)
 		@echo "____________________________Finished____________________________"
 

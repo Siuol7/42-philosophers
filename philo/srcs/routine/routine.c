@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/09 12:32:40 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:49:13 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static int	find_death(t_dinner *table, t_philo *philo)
+static int	find_death(t_dinner *table)
 {
 	int	i;
 
@@ -21,23 +21,35 @@ static int	find_death(t_dinner *table, t_philo *philo)
 	{
 		if (table->philo[i].next_meal > current())
 		{
-			pthread_mutex_lock(table->death);
+			pthread_mutex_lock(table->status);
 			table->philo_death = 1;
-			pthread_mutex_unlock(table->death);
+			pthread_mutex_unlock(table->status);
 			return (0);
 		}
 	}
-	return (1)
+	return (1);
 }
 
-void	philo_thinks(t_dinner *table, t_philo *philo)
+static int	philo_thinks(t_dinner *table)
 {
 
 }
 
-void	routine(table, philo)
+static int	philo_eats(t_dinner *table)
 {
-	philo_thinks(table, philo);
-	philo_eats(table, philo);
-	philo_sleeps(table, philo);
+	fork_up();
+	eating();
+	fork_down();
+}
+
+static int	philo_sleeps(t_dinner *table)
+{
+
+}
+
+int	routine(t_dinner *table)
+{
+	philo_thinks(table);
+	philo_eats(table);
+	philo_sleeps(table);
 }

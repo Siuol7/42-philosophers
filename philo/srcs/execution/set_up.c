@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/09 09:43:46 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:45:12 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void	set_up_philo(t_dinner *table)
 	while (i < table->philo_cnt)
 	{
 		right = (i + 1) % table->philo_cnt;
+		table->philo[i].id = i;
 		table->philo[i].next_meal = 0;
 		table->philo[i].last_meal = 0;
 		table->philo[i].eaten = 0;
@@ -47,7 +48,7 @@ static void	set_up_philo(t_dinner *table)
 	}
 }
 
-int	set_up(t_dinner *table, t_philo *philo, char **av)
+int	set_up(t_dinner *table, char **av)
 {
 	table->philo_cnt = ft_atoui(av[1]);
 	table->fork_cnt = ft_atoui(av[1]);
@@ -62,7 +63,7 @@ int	set_up(t_dinner *table, t_philo *philo, char **av)
 	if (!table->philo || !table->forks_lst)
 		return (setup_error(table));
 	dinner_memset(table);
-	philo_memset(philo);
+	philo_memset(table->philo);
 	if (set_up_mutex(table))
 		return (setup_error(table));
 	set_up_philo(table);

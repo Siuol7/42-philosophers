@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 09:32:27 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/09 09:43:46 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:45:29 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	gen_thread(t_dinner *table, int i)
 	return (1);
 }
 
-int	dinner_starts(t_dinner *table, t_philo *philo)
+int	dinner_starts(t_dinner *table)
 {
 
 }

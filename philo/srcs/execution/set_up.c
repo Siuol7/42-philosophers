@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/10 13:45:12 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:07:02 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static int	set_up_mutex(t_dinner *table)
 	i = 0;
 	while (i < table->fork_cnt)
 	{
-		if (pthread_mutex_init(table->forks_lst[i], NULL))
+		if (pthread_mutex_init(table->forks_key[i], NULL))
 			return (ft_mutex_clear(table, i));
 		i++;
 	}
-	if (pthread_mutex_init(table->status, NULL))
+	if (pthread_mutex_init(table->status_key, NULL))
 		return (0);
 	return (1);
 }
@@ -41,8 +41,8 @@ static void	set_up_philo(t_dinner *table)
 		table->philo[i].next_meal = 0;
 		table->philo[i].last_meal = 0;
 		table->philo[i].eaten = 0;
-		table->philo[i].left_fork = table->forks_lst[i];
-		table->philo[i].right_fork = table->forks_lst[right];
+		table->philo[i].left_key = table->forks_key[i];
+		table->philo[i].right_key = table->forks_key[right];
 		table->philo[i].all = table;
 		i++;
 	}
@@ -59,8 +59,8 @@ int	set_up(t_dinner *table, char **av)
 	if (av[5])
 		table->meals_cnt = ft_atoui(av[5]);
 	table->philo = malloc(table->philo_cnt*sizeof(t_philo));
-	table->forks_lst = malloc(table->fork_cnt*(sizeof(pthread_mutex_t)));
-	if (!table->philo || !table->forks_lst)
+	table->forks_key = malloc(table->fork_cnt*(sizeof(pthread_mutex_t)));
+	if (!table->philo || !table->forks_key)
 		return (setup_error(table));
 	dinner_memset(table);
 	philo_memset(table->philo);

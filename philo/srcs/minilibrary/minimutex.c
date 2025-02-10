@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:08:37 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/10 13:21:24 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:06:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	ft_mutex_clear(t_dinner *table, int i)
 {
 	while (i--)
 	{
-		pthread_mutex_destroy(table->forks_lst[i]);
-		table->forks_lst[i] = NULL;
+		pthread_mutex_destroy(table->forks_key[i]);
+		table->forks_key[i] = NULL;
 	}
-	free(table->forks_lst);
-	table->forks_lst = 	NULL;
+	free(table->forks_key);
+	table->forks_key = 	NULL;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/10 13:34:16 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:41:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,31 @@ typedef struct s_dinner
 	size_t	philos_done;
 	size_t	philo_death;
 	struct s_philo	*philo;
-	pthread_mutex_t	*status;
-	pthread_mutex_t	**forks_lst;
+	pthread_mutex_t	*table_key;
+	pthread_mutex_t	*status_key;
+	pthread_mutex_t	*print_key;
+	pthread_mutex_t	**forks_key;
 }	t_dinner;
 
 typedef struct s_philo
 {
-	size_t			id;
+	int			id;
 	size_t			next_meal;
 	size_t			last_meal;
 	size_t	eaten;
 	struct s_dinner	*all;
 	pthread_t		thread;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*left_key;
+	pthread_mutex_t	*right_key;
 }	t_philo;
 
-typedef enum e_status
+typedef enum e_status_key
 {
 	ERROR,
 	SUCCESS,
 	RUNNING,
 	FINNISH
-}	t_status;
+}	t_status_key;
 
 int		utilities(int ac, char **av);
 int		av_parsing(int ac, char **av);
@@ -61,14 +63,18 @@ int		av_parsing(int ac, char **av);
 
 //_________________________Routine________________________//
 void	routine(table, philo);
+int		find_death(t_philo	*philo);
 
 //_________________________Minilibft______________________//
 int		ft_atoui(char *str);
 int		ft_isspace(char c);
 int 	ft_strlen(char *str);
 int		ft_mutex_clear(t_dinner *table, int i);
+void	lock_mutex(pthread_mutex_t *mt);
+void	unlock_mutex(pthread_mutex_t *mt);
 void	philo_memset(t_philo *philo);
 void	dinner_memset(t_dinner *table);
+void	system_print(t_philo *philo, char *noti);
 size_t	current(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/11 15:06:36 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:46:59 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	find_death(t_philo	*philo)
 {
-	lock_mutex(philo->all->status_key);
+	 lock_mutex(philo->all->status_key);
 	if (philo->all->philo_death == 1)
 	{
 		unlock_mutex(philo->all->status_key);
@@ -45,7 +45,7 @@ static int	philo_sleeps(t_philo *philo)
 	return (processing(philo->all->time_to_die, philo));
 }
 
-int	routine(t_philo	*philo)
+void	routine(t_philo	*philo)
 {
 	if (philo->id % 2 != 0)
 		usleep(philo->all->time_to_eat / 2);

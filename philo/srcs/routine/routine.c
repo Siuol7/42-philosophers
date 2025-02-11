@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/11 15:03:31 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:06:36 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ static int	philo_thinks(t_philo	*philo)
 
 static int	philo_eats(t_philo	*philo)
 {
-	forks_up(philo);
-	eating(philo);
-	forks_down(philo);
+	if (!forks_up(philo))
+		return (0);
+	if (!eating(philo))
+		return (0);
+	return (forks_down(philo));
 }
 
 static int	philo_sleeps(t_philo *philo)
@@ -49,8 +51,11 @@ int	routine(t_philo	*philo)
 		usleep(philo->all->time_to_eat / 2);
 	while (find_death(philo))
 	{
-		philo_thinks(philo);
-		philo_eats(philo);
-		philo_sleeps(philo);
+		if (!philo_thinks(philo))
+			break;
+		if (!philo_eats(philo))
+			break;
+		if (!philo_sleeps(philo))
+			break;
 	}
 }

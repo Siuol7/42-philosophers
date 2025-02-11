@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/11 15:04:07 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:10:58 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ int		ft_isspace(char c);
 int 	ft_strlen(char *str);
 int		ft_mutex_clear(t_dinner *table, int i);
 int		processing(size_t time, t_philo *philo);
-void	lock_mutex(pthread_mutex_t *mt);
-void	unlock_mutex(pthread_mutex_t *mt);
+int		lock_mutex(pthread_mutex_t *mt);
+int		unlock_mutex(pthread_mutex_t *mt);
 void	philo_memset(t_philo *philo);
 void	dinner_memset(t_dinner *table);
 int		system_print(t_philo *philo, char *noti);

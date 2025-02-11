@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:58:49 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/11 14:34:37 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:54:49 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 static int	can_eat(t_philo *philo)
 {
+	lock_mutex(philo->philo_key);
 	if (philo->next_meal > philo->left_philo->next_meal
 		|| philo->next_meal > philo->right_philo->next_meal)
+	{
+		unlock_mutex(philo->philo_key);
 		return (0);
+	}
 	return (1);
 }
 

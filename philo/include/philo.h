@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/11 14:31:07 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:04:07 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	routine(table, philo);
 int		find_death(t_philo	*philo);
 
 //Eating//
-void	forks_up(t_philo *philo);
-void	forks_down(t_philo *philo);
-void	eating(t_philo *philo);
+int		forks_up(t_philo *philo);
+int		forks_down(t_philo *philo);
+int		eating(t_philo *philo);
 //_________________________Minilibft______________________//
 int		ft_atoui(char *str);
 int		ft_isspace(char c);
@@ -83,7 +83,7 @@ void	lock_mutex(pthread_mutex_t *mt);
 void	unlock_mutex(pthread_mutex_t *mt);
 void	philo_memset(t_philo *philo);
 void	dinner_memset(t_dinner *table);
-void	system_print(t_philo *philo, char *noti);
+int		system_print(t_philo *philo, char *noti);
 size_t	current(void);
 
 #endif

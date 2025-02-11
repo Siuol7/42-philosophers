@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/11 14:02:32 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:03:31 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	find_death(t_philo	*philo)
 
 static int	philo_thinks(t_philo	*philo)
 {
-	system_print(philo, "is thinking");
+	return (system_print(philo, "is thinking"));
 }
 
 static int	philo_eats(t_philo	*philo)
@@ -38,8 +38,9 @@ static int	philo_eats(t_philo	*philo)
 
 static int	philo_sleeps(t_philo *philo)
 {
-	system_print(philo, "is sleeping");
-	processing(philo->all->time_to_die, philo);
+	if (!system_print(philo, "is sleeping"))
+		return (0);
+	return (processing(philo->all->time_to_die, philo));
 }
 
 int	routine(t_philo	*philo)

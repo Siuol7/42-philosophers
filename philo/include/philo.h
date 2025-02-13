@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/11 15:10:58 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/13 04:54:31 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ typedef struct s_philo
 typedef enum e_status_key
 {
 	ERROR,
-	SUCCESS,
-	RUNNING,
-	FINNISH
+	ERROR_PARSING,
+	SUCCESS
 }	t_status_key;
 
 int		utilities(int ac, char **av);

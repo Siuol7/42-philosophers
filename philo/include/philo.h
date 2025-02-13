@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/13 04:54:31 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/13 05:18:47 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ typedef enum e_status_key
 
 int		utilities(int ac, char **av);
 int		av_parsing(int ac, char **av);
+int		dinner_starts(t_dinner *table, int i);
+int		monitor(t_dinner *table);
+int		dinner_ends(t_dinner *table, int i);
 
 
 //_________________________Routine________________________//

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:04:12 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/13 05:14:56 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/13 05:19:59 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	error_track(t_dinner *table)
 {
-
+	lock_mutex
 }
 
 static int	over_track(t_dinner *table, int i)
@@ -46,7 +46,7 @@ static int	done_track(t_dinner *table)
 	return (0);
 }
 
-void	tracking(t_dinner *table)
+static int	tracking(t_dinner *table)
 {
 	int	i;
 	int error_signal;
@@ -62,12 +62,16 @@ void	tracking(t_dinner *table)
 
 		if (!error_signal || !over_signal || !done_signal)
 			i++;
-		if (error_signal == -1 || over_signal == -1
+		if (error_signal == 1 || over_signal == -1
 					|| done_signal == -1)
 			return (-1);
-		if (error_signal == 1 || over_signal == 1
-					|| done_signal == 1)
+		if (over_signal == 1 || done_signal == 1)
 			return (1);
 	}
 	return (1);
+}
+
+int	monitor(t_dinner *table)
+{
+
 }

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 09:32:27 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/13 04:38:34 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/13 04:42:32 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,4 @@ static int	wait_thread(t_dinner *table, int i)
 		return (0);
 	}
 	return (1);
-}
-
-int	dinner_starts(t_dinner *table)
-{
-
 }

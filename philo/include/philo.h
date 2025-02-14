@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 11:25:32 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:31:31 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 
 typedef struct s_dinner
 {
-	size_t	error_status;
 	size_t	time_to_eat;
 	size_t	time_to_die;
 	size_t	time_to_sleep;
@@ -32,7 +31,6 @@ typedef struct s_dinner
 	size_t	philos_done;
 	size_t	philo_death;
 	struct s_philo	*philo;
-	pthread_mutex_t	*mutex_error;
 	pthread_mutex_t	*total_meals_key;
 	pthread_mutex_t	*status_key;
 	pthread_mutex_t	*print_key;

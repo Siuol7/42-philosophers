@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/13 02:45:10 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:40:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,15 @@ static int	set_up_mutex(t_dinner *table)
 	{
 		if (pthread_mutex_init(table->forks_key[i], NULL))
 			return (ft_mutex_clear(table, i));
+		if (pthread_mutex_init(table->philo[i].philo_key, NULL))
+			return (0);
 		i++;
 	}
+	if (pthread_mutex_init(table->total_meals_key, NULL))
+		return (0);
 	if (pthread_mutex_init(table->status_key, NULL))
+		return (0);
+	if (pthread_mutex_init(table->print_key, NULL))
 		return (0);
 	return (1);
 }

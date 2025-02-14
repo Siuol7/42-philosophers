@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 11:25:32 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:29:28 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	find_death(t_philo	*philo)
 {
-	 pthread_mutex_lock(philo->all->status_key);
+	pthread_mutex_lock(philo->all->status_key);
 	if (philo->all->philo_death == 1)
 	{
 		pthread_mutex_unlock(philo->all->status_key);

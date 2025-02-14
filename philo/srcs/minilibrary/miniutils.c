@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:01:44 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 14:17:50 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:18:29 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	setup_error(t_dinner *table, int i)
 			free(table->mutex_key[i]);
 			table->mutex_key[i] = NULL;
 		}
-		free (table->forks_key);
+		free(table->mutex_key);
 	}
 	if (table->mutexes != 0)
 		total_mutex_clear(table, 0);

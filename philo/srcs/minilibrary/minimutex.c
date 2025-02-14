@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:08:37 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 12:55:42 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:06:01 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 static void	mutex_clear(t_dinner *table, int i)
 {
-	pthread_mutex_destroy(table->total_meals_key);
-	table->total_meals_key = NULL;
-	pthread_mutex_destroy(table->status_key);
-	table->status_key = NULL;
-	pthread_mutex_destroy(table->print_key);
-	table->print_key = NULL;
+	while (i--)
+	{
+		pthread_mutex_destroy(table->mutex_key[i]);
+		table->mutex_key[i] = NULL;
+	}
+	free(table->mutex_key);
+	table->mutex_key = 	NULL;
 }
 
 static void	mutex_forks_clear(t_dinner *table, int i)
@@ -44,12 +45,20 @@ static void	mutex_philo_clear(t_dinner *table, int i)
 	table->philo = NULL;
 }
 
-void	total_mutex_clear(t_dinner *table, int i)
+int	total_mutex_clear(t_dinner *table, int i)
 {
-	if (i < 6)
-		mutex_clear(table, i);
-	if (i == 4)
-		mutex_forks_clear(table);
-	if (i == 5)
-		mutex_philo_clear(table);
+	int	j;
+
+	j = i;
+	if (table->mutexes > 1)
+		mutex_clear(table, table->mutexes);
+	if (table->mutexes > 3)
+	{
+		if (i == 0 || table->mutexes > 4)
+			j = 5;
+		mutex_forks_clear(table, j);
+	}
+	if (table->mutexes > 4)
+		mutex_philo_clear(table, i);
+	return (0);
 }

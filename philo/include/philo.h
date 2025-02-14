@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 11:50:37 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:06:14 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 typedef struct s_dinner
 {
+	size_t	mutexes;
 	size_t	time_to_eat;
 	size_t	time_to_die;
 	size_t	time_to_sleep;
@@ -34,6 +35,7 @@ typedef struct s_dinner
 	pthread_mutex_t	*total_meals_key;
 	pthread_mutex_t	*status_key;
 	pthread_mutex_t	*print_key;
+	pthread_mutex_t	** mutex_key;
 	pthread_mutex_t	**forks_key;
 }	t_dinner;
 
@@ -65,6 +67,7 @@ int		av_parsing(int ac, char **av);
 int		dinner_starts(t_dinner *table, int i);
 int		dining(t_dinner *table);
 int		dinner_ends(t_dinner *table, int i);
+int		total_mutex_clear(t_dinner *table, int i);
 
 
 //_________________________Routine________________________//

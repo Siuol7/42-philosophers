@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:56:51 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 11:30:08 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 13:45:24 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	utilities(int ac, char **av)
 {
 	t_dinner	table;
-	t_philo		philo;
 
 	if ((ac != 5 && ac != 6)
 		|| !av_parsing(ac, av))

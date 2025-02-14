@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:56:51 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 13:45:24 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:50:19 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	utilities(int ac, char **av)
 		|| !av_parsing(ac, av))
 		return (ERROR_PARSING);
 	if (!set_up(&table, av)
-		|| !dinner_starts(&table, av)
+		|| !dinner_starts(&table)
 		|| !dining(&table)
-		|| !dinner_ends(&table, av))
+		|| !dinner_ends(&table, table.philo_cnt))
 		return (ERROR);
 	return (SUCCESS);
 }

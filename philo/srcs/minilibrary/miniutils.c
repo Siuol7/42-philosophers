@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:01:44 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 14:18:29 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:30:57 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,17 @@ int	processing(size_t time, t_philo *philo)
 	return (1);
 }
 
-int	setup_error(t_dinner *table, int i)
+static void	ft_free_2d(void **arr, int i)
+{
+	while (i--)
+	{
+		free(arr[i]);
+		arr[i] = NULL;
+	}
+	free (arr);
+}
+
+int	setup_error(t_dinner *table)
 {
 	if (table->philo)
 	{
@@ -55,23 +65,10 @@ int	setup_error(t_dinner *table, int i)
 		table->philo = NULL;
 	}
 	if (table->forks_key)
-	{
-		while (table->fork_cnt--)
-		{
-			free(table->forks_key[table->fork_cnt]);
-			table->forks_key[table->fork_cnt] = NULL;
-		}
-		free (table->forks_key);
-	}
+		ft_free_2d(table->forks_key, table->fork_cnt);
 	if (table->mutex_key)
-	{
-		while (i--)
-		{
-			free(table->mutex_key[i]);
-			table->mutex_key[i] = NULL;
-		}
-		free(table->mutex_key);
-	}
+		ft_free_2d(table->mutex_key, 3);
 	if (table->mutexes != 0)
 		total_mutex_clear(table, 0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 14:06:14 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:29:55 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef enum e_status_key
 
 int		utilities(int ac, char **av);
 int		av_parsing(int ac, char **av);
+int		set_up(t_dinner *table, char **av);
 int		dinner_starts(t_dinner *table, int i);
 int		dining(t_dinner *table);
 int		dinner_ends(t_dinner *table, int i);
@@ -82,7 +83,7 @@ int		eating(t_philo *philo);
 int		ft_atoui(char *str);
 int		ft_isspace(char c);
 int 	ft_strlen(char *str);
-int		ft_mutex_clear(t_dinner *table, int i);
+int		total_mutex_clear(t_dinner *table, int i);
 int		processing(size_t time, t_philo *philo);
 void	philo_memset(t_philo *philo);
 void	dinner_memset(t_dinner *table);

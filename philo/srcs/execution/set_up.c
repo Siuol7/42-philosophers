@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 14:17:35 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:29:24 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,9 @@ int	set_up(t_dinner *table, char **av)
 	dinner_memset(table);
 	philo_memset(table->philo);
 	if (!set_up_mutex(table))
-		return (setup_error(table, 3));
+		return (setup_error(table));
 	if (!set_up_2d_mutex(table))
-		return (setup_error(table, 3));
+		return (setup_error(table));
 	set_up_philo(table);
+	return (1);
 }

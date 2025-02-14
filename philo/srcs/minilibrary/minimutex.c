@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:08:37 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 14:06:01 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:09:56 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ int	total_mutex_clear(t_dinner *table, int i)
 		mutex_forks_clear(table, j);
 	}
 	if (table->mutexes > 4)
+	{
+		if (i == 0)
+			i = 5;
 		mutex_philo_clear(table, i);
+	}
 	return (0);
 }

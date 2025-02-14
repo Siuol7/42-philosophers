@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:08:37 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/11 15:10:34 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:25:39 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,3 @@ int	ft_mutex_clear(t_dinner *table, int i)
 	return (0);
 }
 
-int	lock_mutex(pthread_mutex_t *mt)
-{
-	if (!pthread_mutex_lock(mt))
-	{
-		printf("Locking mutex failed\n");
-		return (0);
-	}
-	return (1);
-}
-
-int	unlock_mutex(pthread_mutex_t *mt)
-{
-	if (!pthread_mutex_unlock(mt))
-	{
-		printf("Unlocking mutex failed\n");
-		return (0);
-	}
-	return (1);
-}

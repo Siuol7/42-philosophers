@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 11:40:03 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 12:39:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ static int	set_up_mutex(t_dinner *table)
 	int	i;
 
 	i = 0;
+	if (pthread_mutex_init(table->total_meals_key, NULL))
+		return (0);
+	if (pthread_mutex_init(table->status_key, NULL))
+		return (0);
+	if (pthread_mutex_init(table->print_key, NULL))
+		return (0);
 	while (i < table->fork_cnt)
 	{
 		if (pthread_mutex_init(table->forks_key[i], NULL))
@@ -25,12 +31,6 @@ static int	set_up_mutex(t_dinner *table)
 			return (0);
 		i++;
 	}
-	if (pthread_mutex_init(table->total_meals_key, NULL))
-		return (0);
-	if (pthread_mutex_init(table->status_key, NULL))
-		return (0);
-	if (pthread_mutex_init(table->print_key, NULL))
-		return (0);
 	return (1);
 }
 
@@ -74,7 +74,7 @@ int	set_up(t_dinner *table, char **av)
 		return (setup_error(table));
 	dinner_memset(table);
 	philo_memset(table->philo);
-	if (set_up_mutex(table))
+	if (!set_up_mutex(table))
 		return (setup_error(table));
 	set_up_philo(table);
 }

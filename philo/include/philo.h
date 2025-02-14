@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 11:31:31 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:50:37 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ typedef struct s_philo
 	size_t			eaten;
 	size_t			died;
 	struct s_dinner	*all;
-	t_philo			*left_philo;
-	t_philo			*right_philo;
+	struct s_philo	*left_philo;
+	struct s_philo	*right_philo;
 	pthread_t		thread;
 	pthread_mutex_t	*philo_key;
 	pthread_mutex_t	*left_key;
@@ -68,7 +68,7 @@ int		dinner_ends(t_dinner *table, int i);
 
 
 //_________________________Routine________________________//
-void	routine(table, philo);
+void	routine(t_philo *philo);
 int		find_death(t_philo	*philo);
 
 //Eating//
@@ -81,8 +81,6 @@ int		ft_isspace(char c);
 int 	ft_strlen(char *str);
 int		ft_mutex_clear(t_dinner *table, int i);
 int		processing(size_t time, t_philo *philo);
-int		pthread_mutex_lock(pthread_mutex_t *mt);
-int		pthread_mutex_unlock(pthread_mutex_t *mt);
 void	philo_memset(t_philo *philo);
 void	dinner_memset(t_dinner *table);
 int		system_print(t_philo *philo, char *noti);

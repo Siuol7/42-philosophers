@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:01:44 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 11:25:32 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:53:50 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,9 @@ int	processing(size_t time, t_philo *philo)
 	}
 	usleep(time / 10);
 	return (1);
+}
+
+int	setup_error(t_dinner *table)
+{
+	
 }

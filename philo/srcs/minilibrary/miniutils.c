@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:01:44 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 14:30:57 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:01:11 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int	setup_error(t_dinner *table)
 		table->philo = NULL;
 	}
 	if (table->forks_key)
-		ft_free_2d(table->forks_key, table->fork_cnt);
+		ft_free_2d((void **)table->forks_key, table->fork_cnt);
 	if (table->mutex_key)
-		ft_free_2d(table->mutex_key, 3);
+		ft_free_2d((void **)table->mutex_key, 3);
 	if (table->mutexes != 0)
 		total_mutex_clear(table, 0);
 	return (0);

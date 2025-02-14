@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 14:49:34 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:16:11 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		total_mutex_clear(t_dinner *table, int i);
 
 
 //_________________________Routine________________________//
-void	routine(t_philo *philo);
+void	*routine(void *philo);
 int		find_death(t_philo	*philo);
 
 //Eating//
@@ -89,5 +89,6 @@ void	philo_memset(t_philo *philo);
 void	dinner_memset(t_dinner *table);
 int		system_print(t_philo *philo, char *noti);
 size_t	current(void);
+int		setup_error(t_dinner *table);
 
 #endif

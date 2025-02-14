@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 09:32:27 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 14:51:00 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:13:36 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	dinner_ends(t_dinner *table, size_t limit)
 	i = 0;
 	while (i < limit)
 	{
-		if (pthread_join(&table->philo[i].thread, NULL))
+		if (pthread_join(table->philo[i].thread, NULL))
 		{
 			printf("Joining threads failed");
 			return (0);

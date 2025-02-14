@@ -9,27 +9,36 @@ MAIN			:= ./main
 SRCS			:= ./srcs
 
 
-PARSING			:= parsing
-#EXECUTION		:= execution
+PARSING			:=	parsing
+EXECUTION		:=	execution
 MINILIB			:=  minilibrary
-ERROR			:= error
+MONITOR			:=	monitor
+ROUTINE			:=	routine
 
 MAIN_C			:=	main.c				\
-						utilities.c
+					utilities.c			\
 
 PARSING_C		:=	av_management.c		\
 
-EXECUTION_C		:=
+EXECUTION_C		:=	run.c				\
+					set_up.c			\
 
-ERROR_C			:=
+MINILIB_C		:=	minilibft.c			\
+					minilibft2.c		\
+					minimutex.c			\
+					miniutils.c			\
 
-MINILIB_C		:=	minilibft.c
+MONITOR_C		:=	monitor.c			\
+
+ROUTINE_C		:=	eats.c				\
+					routine.c			\
 
 SRCS			:= 	$(addprefix $(MAIN)/,				$(MAIN_C))		\
-						$(addprefix	$(SRCS)/$(PARSING)/,	$(PARSING_C))	\
-						$(addprefix $(SRCS)/$(MINILIB)/,	$(MINILIB_C))	\
-						#$(addprefix $(SRCS)/$(EXECUTION)/,	$(EXECUTION_C))		\
-						#$(addprefix $(SRCS)/$(ERROR)/,		$(ERROR_C))
+					$(addprefix	$(SRCS)/$(PARSING)/,	$(PARSING_C))	\
+					$(addprefix $(SRCS)/$(MINILIB)/,	$(MINILIB_C))	\
+					$(addprefix $(SRCS)/$(EXECUTION)/,	$(EXECUTION_C))	\
+					$(addprefix $(SRCS)/$(MONITOR)/,	$(MONITOR_C))	\
+					$(addprefix $(SRCS)/$(ROUTINE)/,	$(ROUTINE_C))	\
 
 OBJS			:= $(SRCS:.c=.o)
 
@@ -44,7 +53,7 @@ all:	philo
 #Create source library
 philo : .philo
 .philo: $(OBJS)
-		@cc $(OBJS) -o $(NAME)
+		@cc $(CFLAGS) $(OBJS) -o $(NAME)
 		@touch .philo
 
 # Clean target

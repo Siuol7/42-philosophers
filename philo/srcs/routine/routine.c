@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 11:29:28 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:14:26 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ static int	philo_sleeps(t_philo *philo)
 	return (processing(philo->all->time_to_die, philo));
 }
 
-void	routine(t_philo	*philo)
+void	*routine(void *void_philo)
 {
+	t_philo	*philo;
+
+	philo = (t_philo *)void_philo;
 	if (philo->id % 2 != 0)
 		usleep(philo->all->time_to_eat / 2);
 	while (find_death(philo))

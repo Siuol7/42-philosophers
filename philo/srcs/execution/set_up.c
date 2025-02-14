@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 14:29:24 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:15:41 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	set_up_2d_mutex(t_dinner *table)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	table->mutexes = 3;
@@ -43,27 +43,27 @@ static int	set_up_mutex(t_dinner *table)
 		table->mutexes = 0;
 		return (total_mutex_clear(table, 0));
 	}
-	table->mutex_key[0] = &table->total_meals_key;
+	table->mutex_key[0] = table->total_meals_key;
 	if (pthread_mutex_init(table->status_key, NULL))
 	{
 		table->mutexes = 1;
 		return (total_mutex_clear(table, 0));
 	}
-	table->mutex_key[1] = &table->status_key;
+	table->mutex_key[1] = table->status_key;
 	if (pthread_mutex_init(table->print_key, NULL))
 	{
 		table->mutexes = 2;
 		return (total_mutex_clear(table, 0));
 	}
-	table->mutex_key[2] = &table->print_key;
+	table->mutex_key[2] = table->print_key;
 	return (1);
 }
 
 static void	set_up_philo(t_dinner *table)
 {
-	int	i;
-	int	right;
-	int	left;
+	size_t	i;
+	size_t	right;
+	size_t	left;
 
 	i = 0;
 	while (i < table->philo_cnt)

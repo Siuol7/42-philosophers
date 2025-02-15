@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 15:16:11 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/15 23:52:24 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_dinner
 
 typedef struct s_philo
 {
-	int				id;
+	size_t				id;
 	size_t			next_meal;
 	size_t			last_meal;
 	size_t			eaten;

@@ -6,19 +6,19 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:04:12 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/15 23:41:36 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/15 23:52:37 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static int	over_track(t_dinner *table, int i)
+static int	over_track(t_dinner *table, size_t i)
 {
 	pthread_mutex_lock(table->philo[i].philo_key);
 	if (current() > table->philo[i].next_meal)
 	{
 		table->philo_death = 1;
-		feast_over(table);
+		feast_over(table, i);
 		return (1);
 	}
 	pthread_mutex_unlock(table->philo[i].philo_key);
@@ -39,7 +39,7 @@ static int	done_track(t_dinner *table)
 
 static int	tracking(t_dinner *table)
 {
-	int	i;
+	size_t	i;
 	int error_signal;
 	int over_signal;
 	int done_signal;

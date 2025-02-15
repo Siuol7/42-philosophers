@@ -32,6 +32,7 @@ MONITOR_C		:=	monitor.c			\
 
 ROUTINE_C		:=	eats.c				\
 					routine.c			\
+					routine_control.c	\
 
 SRCS			:= 	$(addprefix $(MAIN)/,				$(MAIN_C))		\
 					$(addprefix	$(SRCS)/$(PARSING)/,	$(PARSING_C))	\

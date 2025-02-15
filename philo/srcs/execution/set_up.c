@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 15:15:41 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 01:09:06 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,16 @@ int	set_up(t_dinner *table, char **av)
 	if (av[5])
 		table->meals_cnt = ft_atoui(av[5]);
 	table->philo = malloc(table->philo_cnt*sizeof(t_philo));
-	table->forks_key = malloc(table->fork_cnt*sizeof(pthread_mutex_t));
-	table->mutex_key = malloc(3*sizeof(pthread_mutex_t));
+	table->forks_key = malloc(table->fork_cnt*sizeof(pthread_mutex_t *));
+	table->mutex_key = malloc(3*sizeof(pthread_mutex_t *));
 	if (!table->philo || !table->forks_key || !table->mutex_key)
 		return (setup_error(table));
-	dinner_memset(table);
-	philo_memset(table->philo);
+	memset(table->philo, 0, table->philo_cnt * sizeof(t_philo));
+    memset(table->forks_key, 0, table->fork_cnt * sizeof(pthread_mutex_t *));
+    memset(table->mutex_key, 0, 3 * sizeof(pthread_mutex_t *));
+	table->total_meals_key = table->mutex_key[0];
+    table->status_key = table->mutex_key[1];
+    table->print_key = table->mutex_key[2];
 	if (!set_up_mutex(table))
 		return (setup_error(table));
 	if (!set_up_2d_mutex(table))

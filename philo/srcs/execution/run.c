@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 09:32:27 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/15 23:51:17 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 00:08:35 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ void	feast_done(t_dinner *table)
 	pthread_mutex_unlock(table->print_key);
 }
 
-void	feast_done(t_dinner *table, size_t i)
+void	feast_over(t_philo *philo)
 {
-	pthread_mutex_lock(table->print_key);
-	printf("%zu %d died", current(), i);
-	pthread_mutex_lock(table->print_key);
+	system_print(philo, "died");
 }
 
 int	dinner_starts(t_dinner *table)

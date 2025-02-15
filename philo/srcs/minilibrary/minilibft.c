@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 18:41:56 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/09 11:49:27 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 01:11:18 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	ft_atoui(char *str)
+size_t	ft_atoui(char *str)
 {
 	size_t	res;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 09:32:27 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/15 23:44:47 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/15 23:48:26 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 void	feast_done(t_dinner *table)
 {
-
+	pthread_mutex_lock(table->print_key);
+	printf("");
+	pthread_mutex_unlock(table->print_key);
 }
 
 void	feast_done(t_dinner *table)
 {
+	pthread_mutex_lock(table->print_key);
+	printf("");
+	pthread_mutex_lock(table->print_key);
 
 }
 

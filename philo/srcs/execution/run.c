@@ -6,11 +6,21 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 09:32:27 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/14 15:13:36 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/15 23:44:47 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
+
+void	feast_done(t_dinner *table)
+{
+
+}
+
+void	feast_done(t_dinner *table)
+{
+
+}
 
 int	dinner_starts(t_dinner *table)
 {

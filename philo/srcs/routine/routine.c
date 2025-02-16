@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 00:30:38 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 02:01:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static int	philo_thinks(t_philo	*philo)
+static int	philo_thinks(t_philo *philo)
 {
 	return (system_print(philo, "is thinking"));
 }
@@ -48,6 +48,8 @@ void	*routine(void *void_philo)
 		if (!philo_eats(philo))
 			break;
 		if (!philo_sleeps(philo))
+			break;
+		if (find_death(philo) || meals_done(philo))
 			break;
 	}
 	return (NULL);

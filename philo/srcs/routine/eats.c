@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:58:49 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 00:23:54 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 01:47:30 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ int	eating(t_philo *philo)
 		forks_down(philo);
 		return (0);
 	}
-	pthread_mutex_lock(philo->all->total_meals_key);
+	pthread_mutex_lock(&philo->all->total_meals_key);
 	if (philo->eaten == philo->all->meals_cnt)
 		philo->all->philos_done++;
-	pthread_mutex_unlock(philo->all->total_meals_key);
+	pthread_mutex_unlock(&philo->all->total_meals_key);
 	forks_down(philo);
 	return (1);
 }

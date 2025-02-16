@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 01:09:06 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 01:47:10 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,24 @@ static int	set_up_2d_mutex(t_dinner *table)
 
 static int	set_up_mutex(t_dinner *table)
 {
-	if (pthread_mutex_init(table->total_meals_key, NULL))
+	if (pthread_mutex_init(&table->total_meals_key, NULL))
 	{
 		table->mutexes = 0;
 		return (total_mutex_clear(table, 0));
 	}
-	table->mutex_key[0] = table->total_meals_key;
-	if (pthread_mutex_init(table->status_key, NULL))
+	table->mutex_key[0] = &table->total_meals_key;
+	if (pthread_mutex_init(&table->status_key, NULL))
 	{
 		table->mutexes = 1;
 		return (total_mutex_clear(table, 0));
 	}
-	table->mutex_key[1] = table->status_key;
-	if (pthread_mutex_init(table->print_key, NULL))
+	table->mutex_key[1] = &table->status_key;
+	if (pthread_mutex_init(&table->print_key, NULL))
 	{
 		table->mutexes = 2;
 		return (total_mutex_clear(table, 0));
 	}
-	table->mutex_key[2] = table->print_key;
+	table->mutex_key[2] = &table->print_key;
 	return (1);
 }
 
@@ -85,6 +85,7 @@ static void	set_up_philo(t_dinner *table)
 
 int	set_up(t_dinner *table, char **av)
 {
+	memset(table, 0, sizeof(t_dinner));
 	table->philo_cnt = ft_atoui(av[1]);
 	table->fork_cnt = ft_atoui(av[1]);
 	table->time_to_die = ft_atoui(av[2]);
@@ -93,17 +94,11 @@ int	set_up(t_dinner *table, char **av)
 	table->meals_cnt = -1;
 	if (av[5])
 		table->meals_cnt = ft_atoui(av[5]);
-	table->philo = malloc(table->philo_cnt*sizeof(t_philo));
-	table->forks_key = malloc(table->fork_cnt*sizeof(pthread_mutex_t *));
-	table->mutex_key = malloc(3*sizeof(pthread_mutex_t *));
+	table->philo = malloc(table->philo_cnt * sizeof(t_philo));
+	table->forks_key = malloc(table->fork_cnt * sizeof(pthread_mutex_t *));
+	table->mutex_key = malloc(3 * sizeof(pthread_mutex_t *));
 	if (!table->philo || !table->forks_key || !table->mutex_key)
 		return (setup_error(table));
-	memset(table->philo, 0, table->philo_cnt * sizeof(t_philo));
-    memset(table->forks_key, 0, table->fork_cnt * sizeof(pthread_mutex_t *));
-    memset(table->mutex_key, 0, 3 * sizeof(pthread_mutex_t *));
-	table->total_meals_key = table->mutex_key[0];
-    table->status_key = table->mutex_key[1];
-    table->print_key = table->mutex_key[2];
 	if (!set_up_mutex(table))
 		return (setup_error(table));
 	if (!set_up_2d_mutex(table))

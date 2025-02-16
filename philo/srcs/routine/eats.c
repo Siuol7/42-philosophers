@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:58:49 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 18:20:25 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 19:28:18 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	can_eat(t_philo *philo)
 {
+	if (find_death(philo) || dinner_done(philo))
+		return (1);
 	pthread_mutex_lock(philo->philo_key);
 	if (philo->next_meal > philo->left_philo->next_meal
 		|| philo->next_meal > philo->right_philo->next_meal)

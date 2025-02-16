@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 18:19:54 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 19:30:02 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static int	philo_thinks(t_philo *philo)
 {
-	system_print(philo, "is thinking");
+	if (!system_print(philo, "is thinking"))
+		return (0);
 	return (1);
 }
 
@@ -39,7 +40,7 @@ void	*routine(void *void_philo)
 	philo = (t_philo *)void_philo;
 	if (philo->id % 2 != 0)
 		usleep(philo->all->time_to_eat / 2);
-	while (!find_death(philo) && !meals_done(philo))
+	while (!find_death(philo) && !dinner_done(philo))
 	{
 		if (!philo_thinks(philo))
 			break ;

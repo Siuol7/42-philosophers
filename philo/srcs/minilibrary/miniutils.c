@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:01:44 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 13:02:21 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 14:39:18 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	system_print(t_philo *philo, char *noti)
 		pthread_mutex_unlock(&philo->all->print_key);
 		return (0);
 	}
-	printf("%zu %zu %s\n", time, philo->id, noti);
+	printf("%zu %zu %s\n", time, philo->id + 1, noti);
 	pthread_mutex_unlock(&philo->all->print_key);
 	return (1);
 }

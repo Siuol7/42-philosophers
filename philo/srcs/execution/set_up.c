@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 01:47:10 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 03:40:54 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int	set_up_2d_mutex(t_dinner *table)
 	table->mutexes = 3;
 	while (i < table->fork_cnt)
 	{
+		table->forks_key[i] = malloc(sizeof(pthread_mutex_t));
 		if (pthread_mutex_init(table->forks_key[i], NULL))
 			return (total_mutex_clear(table, i));
 		table->mutexes = 4;
@@ -28,6 +29,7 @@ static int	set_up_2d_mutex(t_dinner *table)
 	i = 0;
 	while (i < table->fork_cnt)
 	{
+		table->philo[i].philo_key = malloc(sizeof(pthread_mutex_t));
 		if (pthread_mutex_init(table->philo[i].philo_key, NULL))
 			return (total_mutex_clear(table, i));
 		table->mutexes = 5;
@@ -71,7 +73,8 @@ static void	set_up_philo(t_dinner *table)
 		right = (i + 1) % table->philo_cnt;
 		left = (i - 1 + table->philo_cnt) % table->philo_cnt;
 		table->philo[i].id = i;
-		table->philo[i].next_meal = 0;
+		table->philo[i].start_time = current();
+		table->philo[i].next_meal = current() + table->time_to_die;
 		table->philo[i].last_meal = 0;
 		table->philo[i].eaten = 0;
 		table->philo[i].left_key = table->forks_key[i];
@@ -85,7 +88,6 @@ static void	set_up_philo(t_dinner *table)
 
 int	set_up(t_dinner *table, char **av)
 {
-	memset(table, 0, sizeof(t_dinner));
 	table->philo_cnt = ft_atoui(av[1]);
 	table->fork_cnt = ft_atoui(av[1]);
 	table->time_to_die = ft_atoui(av[2]);
@@ -95,8 +97,8 @@ int	set_up(t_dinner *table, char **av)
 	if (av[5])
 		table->meals_cnt = ft_atoui(av[5]);
 	table->philo = malloc(table->philo_cnt * sizeof(t_philo));
-	table->forks_key = malloc(table->fork_cnt * sizeof(pthread_mutex_t *));
-	table->mutex_key = malloc(3 * sizeof(pthread_mutex_t *));
+	table->forks_key = (pthread_mutex_t **)malloc(table->fork_cnt * sizeof(pthread_mutex_t *));
+	table->mutex_key = (pthread_mutex_t **)malloc(3 * sizeof(pthread_mutex_t *));
 	if (!table->philo || !table->forks_key || !table->mutex_key)
 		return (setup_error(table));
 	if (!set_up_mutex(table))

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:01:44 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 01:40:58 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 03:45:50 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,21 @@ size_t	current(void)
 	struct timeval	time;
 	if (gettimeofday(&time, NULL) < 0)
 	{
-		write(2, "Get time error\n", 19);
-		return (-1);
+		write(2, "Get time error\n", 15);
+		return (0);
 	}
-	return (time.tv_sec * 1000 + time.tv_usec/1000);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
 int	system_print(t_philo *philo, char *noti)
 {
 	pthread_mutex_lock(&philo->all->print_key);
 	if (find_death(philo) || meals_done(philo))
+	{
+		pthread_mutex_unlock(&philo->all->print_key);
 		return (0);
-	printf("%zu %zu %s", current(), philo->id, noti);
+	}
+	printf("%zu %zu %s", current() - philo->start_time, philo->id, noti);
 	pthread_mutex_unlock(&philo->all->print_key);
 	return (1);
 }

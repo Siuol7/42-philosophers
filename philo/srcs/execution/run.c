@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 09:32:27 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 01:41:13 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 03:48:49 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	dinner_starts(t_dinner *table)
 			printf("Creating threads failed");
 			return (0);
 		}
+		printf("Created\n");
 		i++;
 	}
 	return (1);

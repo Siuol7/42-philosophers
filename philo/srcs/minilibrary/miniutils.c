@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:01:44 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 04:25:46 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 13:02:21 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,16 @@ size_t	current(void)
 
 int	system_print(t_philo *philo, char *noti)
 {
+	size_t	time;
+
+	time = current() - philo->start_time;
 	pthread_mutex_lock(&philo->all->print_key);
 	if (find_death(philo) || meals_done(philo))
 	{
 		pthread_mutex_unlock(&philo->all->print_key);
 		return (0);
 	}
-	printf("%zu %zu %s\n", current() - philo->start_time, philo->id, noti);
+	printf("%zu %zu %s\n", time, philo->id, noti);
 	pthread_mutex_unlock(&philo->all->print_key);
 	return (1);
 }

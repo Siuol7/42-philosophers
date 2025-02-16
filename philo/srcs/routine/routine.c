@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 06:31:40 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 14:26:37 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,8 @@ static int	philo_thinks(t_philo *philo)
 
 static int	philo_eats(t_philo	*philo)
 {
-	if (!forks_up(philo))
-		return (0);
 	if (!eating(philo))
 		return (0);
-	forks_down(philo);
 	return (1);
 }
 
@@ -32,7 +29,7 @@ static int	philo_sleeps(t_philo *philo)
 {
 	if (!system_print(philo, "is sleeping"))
 		return (0);
-	return (processing(philo->all->time_to_die, philo));
+	return (processing(philo->all->time_to_eat, philo));
 }
 
 void	*routine(void *void_philo)

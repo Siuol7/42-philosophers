@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:58:49 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 06:48:06 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 14:12:22 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	forks_up(t_philo *philo)
 		forks_down(philo);
 		return (0);
 	}
-	printf("Im out--id: %zu\n", philo->id);
 	return (1);
 }
 
@@ -52,21 +51,21 @@ void	forks_down(t_philo *philo)
 int	eating(t_philo *philo)
 {
 	while (!can_eat(philo))
-		usleep(philo->all->time_to_eat);
-	printf("before forks up -- id:%zu\n", philo->id);
+		usleep(philo->all->time_to_eat / 10);
 	if (!forks_up(philo))
 		return (0);
 	pthread_mutex_lock(philo->philo_key);
-	philo->last_meal = current() + philo->all->time_to_eat;
-	philo->next_meal = philo->last_meal + philo->all->time_to_die;
+	philo->last_meal = current();
+	philo->next_meal = philo->last_meal + philo->all->time_to_die
+										+ philo->all->time_to_eat;
 	philo->eaten++;
 	pthread_mutex_unlock(philo->philo_key);
-	processing(philo->all->time_to_eat, philo);
 	if (!system_print(philo, "is eating"))
 	{
 		forks_down(philo);
 		return (0);
 	}
+	processing(philo->all->time_to_eat, philo);
 	pthread_mutex_lock(&philo->all->total_meals_key);
 	if (philo->eaten == philo->all->meals_cnt)
 		philo->all->philos_done++;

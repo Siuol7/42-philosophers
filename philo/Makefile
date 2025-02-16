@@ -24,7 +24,6 @@ EXECUTION_C		:=	run.c				\
 					set_up.c			\
 
 MINILIB_C		:=	minilibft.c			\
-					minilibft2.c		\
 					minimutex.c			\
 					miniutils.c			\
 

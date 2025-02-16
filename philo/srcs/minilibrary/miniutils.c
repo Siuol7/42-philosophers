@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:01:44 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 16:18:21 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 18:19:26 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 size_t	current(void)
 {
 	struct timeval	time;
+
 	if (gettimeofday(&time, NULL) < 0)
 	{
 		write(2, "Get time error\n", 15);

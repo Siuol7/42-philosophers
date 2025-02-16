@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 18:41:56 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 01:11:18 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 18:17:06 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-size_t	ft_atoui(char *str)
+int	ft_atoui(char *str)
 {
 	size_t	res;
 	int		i;
@@ -34,7 +34,7 @@ size_t	ft_atoui(char *str)
 	}
 	while (ft_isspace(str[i]))
 		i++;
-	if	(str[i])
+	if (str[i])
 		return (-1);
 	return (res);
 }
@@ -44,7 +44,7 @@ int	ft_isspace(char c)
 	return (c == 32 || (9 <= c && c <= 13));
 }
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int	cnt;
 

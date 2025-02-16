@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:04:12 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 17:13:02 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 18:21:15 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,14 @@ static int	done_track(t_dinner *table)
 static int	tracking(t_dinner *table)
 {
 	size_t	i;
-	int over_signal;
-	int done_signal;
+	int		over_signal;
+	int		done_signal;
 
 	i = 0;
 	while (i < table->philo_cnt)
 	{
 		over_signal = over_track(table, i);
 		done_signal = done_track(table);
-
 		if (over_signal == 1 || done_signal == 1)
 			return (1);
 		i++;

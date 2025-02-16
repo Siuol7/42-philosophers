@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 09:32:27 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 16:21:40 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 18:14:23 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	feast_done(t_dinner *table)
 {
 	pthread_mutex_lock(&table->print_key);
-	printf("Every philosopher has done their dinner");
+	printf("Every philosopher has done %zu meals\n", table->meals_cnt);
 	pthread_mutex_unlock(&table->print_key);
 }
 
@@ -34,10 +34,11 @@ int	dinner_starts(t_dinner *table)
 	i = 0;
 	while (i < table->philo_cnt)
 	{
-		if (pthread_create(&table->philo[i].thread, NULL, &routine, &table->philo[i]))
+		if (pthread_create(&table->philo[i].thread
+				, NULL, &routine, &table->philo[i]))
 		{
 			dinner_ends(table, i);
-			printf("Creating threads failed");
+			printf("Creating threads failed\n");
 			return (0);
 		}
 		i++;
@@ -54,7 +55,7 @@ int	dinner_ends(t_dinner *table, size_t limit)
 	{
 		if (pthread_join(table->philo[i].thread, NULL))
 		{
-			printf("Joining threads failed");
+			printf("Joining threads failed\n");
 			return (0);
 		}
 		i++;

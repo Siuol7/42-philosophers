@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 04:07:46 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 18:18:25 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@
 
 typedef struct s_dinner
 {
-	size_t	mutexes;
-	size_t	time_to_eat;
-	size_t	time_to_die;
-	size_t	time_to_sleep;
-	size_t	meals_cnt;
-	size_t	philo_cnt;
-	size_t	fork_cnt;
-	size_t	philos_done;
-	size_t	philo_death;
+	size_t			mutexes;
+	size_t			time_to_eat;
+	size_t			time_to_die;
+	size_t			time_to_sleep;
+	size_t			meals_cnt;
+	size_t			philo_cnt;
+	size_t			fork_cnt;
+	size_t			philos_done;
+	size_t			philo_death;
 	struct s_philo	*philo;
 	pthread_mutex_t	total_meals_key;
 	pthread_mutex_t	status_key;
@@ -73,7 +73,6 @@ void	feast_over(t_philo *philo);
 void	feast_done(t_dinner *table);
 int		total_mutex_clear(t_dinner *table, size_t i);
 
-
 //_________________________Routine________________________//
 void	*routine(void *philo);
 int		find_death(t_philo	*philo);
@@ -84,12 +83,10 @@ int		forks_up(t_philo *philo);
 void	forks_down(t_philo *philo);
 int		eating(t_philo *philo);
 //_________________________Minilibft______________________//
-size_t	ft_atoui(char *str);
+int		ft_atoui(char *str);
 int		ft_isspace(char c);
-int 	ft_strlen(char *str);
+int		ft_strlen(char *str);
 int		processing(size_t time, t_philo *philo);
-void	philo_memset(t_philo *philo);
-void	dinner_memset(t_dinner *table);
 int		system_print(t_philo *philo, char *noti);
 size_t	current(void);
 int		setup_error(t_dinner *table);

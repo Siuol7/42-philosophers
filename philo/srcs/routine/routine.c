@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 17:28:42 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 18:19:54 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	*routine(void *void_philo)
 	while (!find_death(philo) && !meals_done(philo))
 	{
 		if (!philo_thinks(philo))
-			break;
+			break ;
 		if (!philo_eats(philo))
-			break;
+			break ;
 		if (!philo_sleeps(philo))
-			break;
+			break ;
 	}
 	return (NULL);
 }

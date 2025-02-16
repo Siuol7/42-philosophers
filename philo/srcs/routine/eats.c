@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:58:49 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 19:28:18 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:07:44 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	eating(t_philo *philo)
 
 	time = current();
 	while (!can_eat(philo))
-		usleep(philo->all->time_to_eat / 10);
+		usleep(philo->all->time_to_eat / 2);
 	if (!forks_up(philo))
 		return (0);
 	pthread_mutex_lock(philo->philo_key);

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:04:12 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 18:37:49 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:08:16 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,14 @@ static int	tracking(t_dinner *table)
 		if (over_signal == 1 || done_signal == 1)
 			return (1);
 		i++;
+		usleep(1000);
 	}
 	return (0);
 }
 
 int	dining(t_dinner *table)
 {
-	usleep(5000);
+	usleep(1000);
 	while (1)
 	{
 		if (tracking(table))

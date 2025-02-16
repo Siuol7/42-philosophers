@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 00:11:49 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 04:15:59 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:09:23 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	find_death(t_philo	*philo)
 int	meals_done(t_philo *philo)
 {
 	if ((int)philo->all->meals_cnt == -1)
-		return (1);
+		return (0);
 	pthread_mutex_lock(&philo->all->total_meals_key);
 	if (philo->all->philos_done == philo->all->philo_cnt)
 	{

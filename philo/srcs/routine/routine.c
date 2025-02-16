@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 14:26:37 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:28:42 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	philo_sleeps(t_philo *philo)
 {
 	if (!system_print(philo, "is sleeping"))
 		return (0);
-	return (processing(philo->all->time_to_eat, philo));
+	return (processing(philo->all->time_to_sleep, philo));
 }
 
 void	*routine(void *void_philo)

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 09:32:27 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 14:16:47 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:21:40 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	feast_over(t_philo *philo)
 	size_t	time;
 
 	time = current() - philo->start_time - 1;
-	printf("%zu %zu %s\n", time, philo->id, "died");
+	printf("%zu %zu %s\n", time, philo->id + 1, "died");
 }
 
 int	dinner_starts(t_dinner *table)

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 13:27:26 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 15:57:13 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,9 @@ int	set_up(t_dinner *table, char **av)
 	table->meals_cnt = -1;
 	if (av[5])
 		table->meals_cnt = ft_atoui(av[5]);
+	table->philo_death = 0;
+	table->philos_done = 0;
+	table->mutexes = 0;
 	table->philo = malloc(table->philo_cnt * sizeof(t_philo));
 	table->forks_key = (pthread_mutex_t **)malloc(table->fork_cnt * sizeof(pthread_mutex_t *));
 	table->mutex_key = (pthread_mutex_t **)malloc(3 * sizeof(pthread_mutex_t *));

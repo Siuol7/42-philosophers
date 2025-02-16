@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:58:49 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 14:12:22 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:28:00 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	forks_up(t_philo *philo)
 		pthread_mutex_unlock(philo->left_key);
 		return (0);
 	}
+	if (philo->all->fork_cnt == 1)
+		return (pthread_mutex_unlock(philo->left_key));
 	pthread_mutex_lock(philo->right_key);
 	if (!system_print(philo, "has taken a fork"))
 	{
@@ -50,13 +52,16 @@ void	forks_down(t_philo *philo)
 
 int	eating(t_philo *philo)
 {
+	size_t time;
+
+	time = current();
 	while (!can_eat(philo))
 		usleep(philo->all->time_to_eat / 10);
 	if (!forks_up(philo))
 		return (0);
 	pthread_mutex_lock(philo->philo_key);
-	philo->last_meal = current();
-	philo->next_meal = philo->last_meal + philo->all->time_to_die
+	philo->last_meal = time;
+	philo->next_meal = time + philo->all->time_to_die
 										+ philo->all->time_to_eat;
 	philo->eaten++;
 	pthread_mutex_unlock(philo->philo_key);

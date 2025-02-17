@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:04:12 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 20:08:16 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:13:41 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static int	over_track(t_dinner *table, size_t i)
 {
-	size_t	time;
-
-	time = current();
 	pthread_mutex_lock(table->philo[i].philo_key);
-	if (time > table->philo[i].next_meal)
+
+	printf("PHILO %zu last %zu current %zu\n", i, table->philo[i].last_meal - table->start_time, current() - table->start_time);
+	// printf("PHILO %zu last %zu current %zu\n", i, current() - table->philo[i].last_meal, table->time_to_die);
+	if (current() - table->philo[i].last_meal >= table->time_to_die)
 	{
 		table->philo_death = 1;
 		feast_over(&table->philo[i]);
@@ -63,7 +63,7 @@ static int	tracking(t_dinner *table)
 
 int	dining(t_dinner *table)
 {
-	usleep(1000);
+	usleep(3000);
 	while (1)
 	{
 		if (tracking(table))

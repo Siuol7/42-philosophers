@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 18:13:48 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:33:06 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,7 @@ static void	set_up_philo(t_dinner *table)
 		right = (i + 1) % table->philo_cnt;
 		left = (i - 1 + table->philo_cnt) % table->philo_cnt;
 		table->philo[i].id = i;
-		table->philo[i].start_time = current();
-		table->philo[i].next_meal = current() + table->time_to_die;
-		table->philo[i].last_meal = 0;
+		table->philo[i].last_meal = table->start_time;
 		table->philo[i].eaten = 0;
 		table->philo[i].left_key = table->forks_key[i];
 		table->philo[i].right_key = table->forks_key[right];
@@ -110,6 +108,7 @@ int	set_up(t_dinner *table, char **av)
 		return (setup_error(table));
 	if (!set_up_2d_mutex(table))
 		return (setup_error(table));
+	table->start_time = current();
 	set_up_philo(table);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:01:44 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 20:08:01 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:49:43 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,23 @@ size_t	current(void)
 
 int	system_print(t_philo *philo, char *noti)
 {
-	size_t	time;
-
-	time = current() - philo->start_time;
 	pthread_mutex_lock(&philo->all->print_key);
 	if (find_death(philo) || dinner_done(philo))
 	{
 		pthread_mutex_unlock(&philo->all->print_key);
 		return (0);
 	}
-	printf("%zu %zu %s\n", time, philo->id + 1, noti);
+	printf("%zu %zu %s\n", current() - philo->all->start_time, philo->id + 1, noti);
 	pthread_mutex_unlock(&philo->all->print_key);
 	return (1);
 }
 
-int	processing(size_t time, t_philo *philo)
+int	processing(size_t deadline, t_philo *philo)
 {
-	size_t	deadline;
+	size_t	time;
 
-	deadline = current() + time;
-	while (current() < deadline)
+	time = current();
+	while (current() - time < deadline)
 	{
 		if (find_death(philo) || dinner_done(philo))
 			return (0);

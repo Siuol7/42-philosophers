@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 19:30:02 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/17 10:45:05 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	*routine(void *void_philo)
 
 	philo = (t_philo *)void_philo;
 	if (philo->id % 2 != 0)
-		usleep(philo->all->time_to_eat / 2);
+		usleep(philo->all->time_to_eat);
 	while (!find_death(philo) && !dinner_done(philo))
 	{
 		if (!philo_thinks(philo))

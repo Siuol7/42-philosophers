@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:01:44 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/17 15:44:26 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:22:29 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	processing(size_t deadline, t_philo *philo)
 	{
 		if (find_death(philo) || dinner_done(philo))
 			return (0);
-		usleep(1000);
+		usleep(500);
 	}
 	return (1);
 }

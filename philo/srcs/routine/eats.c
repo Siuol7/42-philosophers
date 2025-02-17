@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:58:49 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/17 12:17:41 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:27:55 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int	eating(t_philo *philo)
 		forks_down(philo);
 		return (0);
 	}
-	pthread_mutex_lock(philo->philo_key);
 	if (!processing(philo->all->time_to_eat, philo))
 	{
 		forks_down(philo);
 		return (0);
 	}
+	pthread_mutex_lock(philo->philo_key);
 	philo->last_meal = current();
 	philo->eaten++;
 	pthread_mutex_unlock(philo->philo_key);

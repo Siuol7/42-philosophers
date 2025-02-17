@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/17 11:33:06 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:49:25 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	set_up_philo(t_dinner *table)
 	{
 		right = (i + 1) % table->philo_cnt;
 		left = (i - 1 + table->philo_cnt) % table->philo_cnt;
-		table->philo[i].id = i;
+		table->philo[i].id = i + 1;
 		table->philo[i].last_meal = table->start_time;
 		table->philo[i].eaten = 0;
 		table->philo[i].left_key = table->forks_key[i];

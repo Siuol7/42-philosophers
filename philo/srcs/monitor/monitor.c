@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:04:12 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/18 14:14:42 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:23:38 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	tracking(t_dinner *table)
 
 int	dining(t_dinner *table)
 {
-	usleep(1000);
+	usleep(5000);
 	while (1)
 	{
 		if (tracking(table))

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/17 10:45:05 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:25:15 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@ void	*routine(void *void_philo)
 	t_philo	*philo;
 
 	philo = (t_philo *)void_philo;
+	while (current() > philo->all->start_time + 5)
+		usleep(100);
+	printf("start at %zu", current() - philo->all->start_time);
 	if (philo->id % 2 != 0)
-		usleep(philo->all->time_to_eat);
+		usleep(philo->all->time_to_eat / 2 * 1000);
 	while (!find_death(philo) && !dinner_done(philo))
 	{
 		if (!philo_thinks(philo))

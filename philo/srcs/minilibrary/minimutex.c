@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:08:37 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/16 18:19:38 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/20 07:16:13 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	mutex_forks_clear(t_dinner *table, size_t i)
 	while (i--)
 	{
 		pthread_mutex_destroy(table->forks_key[i]);
+		free(table->forks_key[i]);
 		table->forks_key[i] = NULL;
 	}
 	free(table->forks_key);
@@ -39,6 +40,7 @@ static void	mutex_philo_clear(t_dinner *table, size_t i)
 	while (i--)
 	{
 		pthread_mutex_destroy(table->philo[i].philo_key);
+		free(table->philo[i].philo_key);
 		table->philo[i].philo_key = NULL;
 	}
 	free(table->philo);

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 09:32:27 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/21 10:14:16 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/21 10:57:47 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int	dinner_starts(t_dinner *table)
 				, NULL, &routine, &table->philo[i]))
 		{
 			dinner_ends(table, i);
+			pthread_mutex_lock(&table->print_key);
 			printf("Creating threads failed\n");
+			pthread_mutex_unlock(&table->print_key);
 			return (0);
 		}
 		i++;
@@ -57,7 +59,9 @@ int	dinner_ends(t_dinner *table, size_t limit)
 	{
 		if (pthread_join(table->philo[i].thread, NULL))
 		{
+			pthread_mutex_lock(&table->print_key);
 			printf("Joining threads failed\n");
+			pthread_mutex_unlock(&table->print_key);
 			return (0);
 		}
 		i++;

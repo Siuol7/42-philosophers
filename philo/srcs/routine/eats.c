@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:58:49 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/21 10:34:39 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/21 11:27:29 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	forks_up(t_philo *philo)
 {
 	pthread_mutex_lock(philo->left_key);
-	if (!system_print(philo, "has taken a left fork"))
+	if (!system_print(philo, "has taken a fork"))
 	{
 		pthread_mutex_unlock(philo->left_key);
 		return (0);
@@ -23,7 +23,7 @@ int	forks_up(t_philo *philo)
 	if (philo->all->fork_cnt == 1)
 		return (pthread_mutex_unlock(philo->left_key));
 	pthread_mutex_lock(philo->right_key);
-	if (!system_print(philo, "has taken a right fork"))
+	if (!system_print(philo, "has taken a fork"))
 	{
 		forks_down(philo);
 		return (0);

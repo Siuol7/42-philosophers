@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:04:12 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/21 02:15:47 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/21 10:18:24 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	over_track(t_dinner *table, size_t i)
 {
 	pthread_mutex_lock(table->philo[i].philo_key);
-
 	if (current() - table->philo[i].last_meal >= table->time_to_die)
 	{
 		pthread_mutex_lock(&table->status_key);

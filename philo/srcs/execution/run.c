@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 09:32:27 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/19 02:44:11 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/21 10:14:16 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	feast_over(t_philo *philo)
 	size_t	time;
 
 	time = current() - philo->all->start_time - 5000;
+	pthread_mutex_lock(&philo->all->print_key);
 	printf("%zu %zu %s\n", time, philo->id, "died");
+	pthread_mutex_unlock(&philo->all->print_key);
 }
 
 int	dinner_starts(t_dinner *table)

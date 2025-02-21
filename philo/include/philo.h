@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:38:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/17 10:44:07 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/21 10:38:42 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ typedef struct s_philo
 	size_t			eaten;
 	size_t			died;
 	struct s_dinner	*all;
-	struct s_philo	*left_philo;
-	struct s_philo	*right_philo;
 	pthread_t		thread;
 	pthread_mutex_t	*philo_key;
 	pthread_mutex_t	*left_key;

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 07:38:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/19 04:06:47 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/21 02:21:23 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	*routine(void *void_philo)
 		usleep(100);
 	if (philo->id % 2 != 0)
 		usleep(philo->all->time_to_eat/2 *1000);
-	//printf("START AT %zu\n", current());
 	while (1)
 	{
 		if (!philo_thinks(philo))

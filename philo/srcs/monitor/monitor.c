@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:04:12 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/21 02:12:47 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/21 02:15:47 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static int	tracking(t_dinner *table)
 int	dining(t_dinner *table)
 {
 	usleep(5000000);
-	//printf("MONITOR AT %zu\n", current());
 	while (1)
 	{
 		if (tracking(table))

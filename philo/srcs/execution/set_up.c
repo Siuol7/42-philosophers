@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 02:48:19 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/21 10:38:34 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/21 10:39:13 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static void	set_up_philo(t_dinner *table)
 {
 	size_t	i;
 	size_t	right;
-	size_t	left;
 
 	i = 0;
 	while (i < table->philo_cnt)

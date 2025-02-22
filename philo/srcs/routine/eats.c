@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:58:49 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/21 11:27:29 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/22 15:55:49 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	eating(t_philo *philo)
 {
 	if (!forks_up(philo))
 		return (0);
-	if (!system_print(philo, "is eating"))
+	if (!processing(philo->all->time_to_eat, philo))
 	{
 		forks_down(philo);
 		return (0);
 	}
-	if (!processing(philo->all->time_to_eat, philo))
+	if (!system_print(philo, "is eating"))
 	{
 		forks_down(philo);
 		return (0);

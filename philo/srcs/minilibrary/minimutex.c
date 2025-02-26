@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:08:37 by caonguye          #+#    #+#             */
-/*   Updated: 2025/02/20 07:16:13 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/02/26 04:55:36 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static void	mutex_clear(t_dinner *table, size_t i)
 {
 	while (i--)
 	{
-		pthread_mutex_destroy(table->mutex_key[i]);
-		table->mutex_key[i] = NULL;
+		pthread_mutex_destroy(table->mutex_key[i - 1]);
+		table->mutex_key[i - 1] = NULL;
 	}
 	free(table->mutex_key);
 	table->mutex_key = NULL;
@@ -52,8 +52,8 @@ int	total_mutex_clear(t_dinner *table, size_t i)
 	size_t	j;
 
 	j = i;
-	if (table->mutexes > 1)
-		mutex_clear(table, 3);
+	if (table->mutexes > 0)
+		mutex_clear(table, table->mutexes);
 	if (table->mutexes > 3)
 	{
 		if (i == 0 || table->mutexes > 4)

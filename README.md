@@ -43,3 +43,7 @@ make
 
 ---
 *"No philosopher shall starve in the pursuit of knowledge"*
+
+| ***Execute & Makefile tutorial***|
+|-----------|
+| ![Philosophers](https://github.com/Siuol7/Project-Overview/blob/main/assets/philo.gif) |
